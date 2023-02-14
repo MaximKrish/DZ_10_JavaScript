@@ -6,29 +6,94 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            gap: 32px;
+            flex-wrap: wrap;
+        }
+        
+        .content_text {
+            color: rgb(99, 149, 241);
+        }
+        
+        .product {
+            display: flex;
+            justify-content: center;
+            gap: 32px;
+            flex-wrap: wrap;
+            width: 495px;
+            border: 1px solid black;
+        }
+    </style>
 </head>
 
 <body>
     <!-- Задание 1 -->
-    <h2>Задание 1</h2>
+    <!-- <h2>Задание 1</h2>
     <p>1. Поиск в интернете (бесплатные api примеры). http://www.boredapi.com/api/activity/ </p>
     <p>2. Найти любые данные, на произвольную тему.</p>
     <p>3. Создать файл data.js.</p>
-    <p>4. Создать переменную которая будет хранить данные из публичных api.</p>
+    <p>4. Создать переменную которая будет хранить данные из публичных api.</p> -->
 
 
     <!-- Задание 2 -->
-    <h2>Задание 2</h2>
+    <!-- <h2>Задание 2</h2>
     <p>1. Создать файл index.html.</p>
     <p>2. Подключить data.js.</p>
     <p>3. Сформировать контент из данных (картинка загловок и параграф).</p>
     <p>4. Добавить данный контент в вёрстку.</p>
-    <p>5. * Добавить стили при необходимости (по желанию).</p>
+    <p>5. * Добавить стили при необходимости (по желанию).</p> -->
+
+
+
+    <script src="data.js"></script>
+    <script>
+        const contentEl = document.querySelector('body');
+        const data = JSON.parse(dataInfo);
+
+        data.forEach(element => {
+            const productEl = document.createElement('div');
+            productEl.classList.add('product');
+
+
+            const dogImg = document.createElement('img');
+            dogImg.src = element.link;
+            dogImg.classList.add('dog_img');
+            dogImg.setAttribute('alt', element.type);
+
+
+            const productTxt = document.createElement('p');
+            productTxt.classList.add('product_text');
+            productTxt.textContent = element.type;
+
+            const priceEl = document.createElement('p');
+            priceEl.classList.add('product_price');
+            priceEl.textContent = element.price;
+
+            const textEl = document.createElement('h2');
+            textEl.classList.add('content_text');
+            textEl.textContent = element.activity;
+
+            contentEl.prepend(productEl);
+            // contentEl.prepend(textEl);
+            // contentEl.prepend(dogImg);
+            // contentEl.prepend(priceEl);
+            // contentEl.prepend(productTxt);
+            productEl.appendChild(textEl);
+            productEl.appendChild(dogImg);
+
+            productEl.appendChild(productTxt);
+            productEl.appendChild(priceEl);
 
 
 
 
 
+        });
+    </script>
 
 </body>
 
